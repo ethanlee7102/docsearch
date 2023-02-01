@@ -18,5 +18,20 @@ public class TestDocSearch {
     String expect = "Found 3 paths:\n./written_2/travel_guides/berlitz1/WhatToJapan.txt\n./written_2/travel_guides/berlitz1/WhereToJapan.txt\n./written_2/travel_guides/berlitz2/California-WhereToGo.txt";
     assertEquals(expect, h.handleRequest(rootPath));
 	}
+    @Test 
+	public void testSearch2() throws URISyntaxException, IOException {
+    Handler h = new Handler("./written_2/");
+    URI rootPath = new URI("http://localhost/search?q=lettuce");
+    String expect = "Found 1 paths:\n./written_2/non-fiction/OUP/Castro/chB.txt";
+    assertEquals(expect, h.handleRequest(rootPath));
+    }
+    @Test 
+	public void testSearch3() throws URISyntaxException, IOException {
+    Handler h = new Handler("./written_2/");
+    URI rootPath = new URI("http://localhost/search?q=ketchup");
+    String expect = "Found 2 paths:\n./written_2/travel_guides/berlitz1/WhereToFrance.txt\n./written_2/travel_guides/berlitz2/California-WhereToGo.txt";
+    assertEquals(expect, h.handleRequest(rootPath));
+    }
+
 }
 
